@@ -1,38 +1,83 @@
+html,body {
+    height: 100%;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+.px1 {
+    padding: 0 1rem;
+}
+.canvas {
+    border: 3px solid cadetblue;
+}
+
+.logo {
+    font-size: 30px;
+}
+
+.toolBar li {
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.toolBar li i:hover {
+    border-radius: 20px;
+    background-color: rgb(211, 211, 211);
+}
+
 .App {
-  text-align: center;
+    /* padding: 0 10%; */
+    /* position: absolute; */
+    /* inset: 0; */
+     /* display: flex;
+    justify-content: center; */
+    /* min-height: 500px; */
+    /* align-items: center; */
+}
+.flexContainer{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+.flexGrow {
+    flex: 1 1 auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.flexJustifi {
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    justify-content: space-around;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.toolBar {
+    justify-content: space-between;
+    border-right: 3px solid cadetblue;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.overflowY {
+    overflow-y: auto; 
+    max-height: 600px
 }
 
-.App-link {
-  color: #61dafb;
+.overflowX {
+    overflow-x: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.mx2 {
+   margin: 2rem 0;
+}
+
+.w260 {
+    max-width: 350px;
+}
+
+.card:hover {
+    box-shadow: 0 24px 38px 3px rgb(0 0 0 / 14%), 0 9px 46px 8px rgb(0 0 0 / 12%), 0 11px 15px -7px rgb(0 0 0 / 20%);
 }
