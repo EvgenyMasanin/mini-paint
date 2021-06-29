@@ -5,18 +5,19 @@ import { setUser } from '../Redux/UserData/userDataActions';
 
 const TestComp = () => {
 
-    const { user } = useTypedSelector(state => state.userData)
-    console.log(user);
-    const dispatch = useDispatch()
+    const { userName } = useTypedSelector(state => state.userData)
+    console.log('sad');
 
+    // console.log(user)
 
+    const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(setUser({ name: 'Bob', age: 20 }))
+
     }, [])
 
     return (
         <div>
-            <span>{ JSON.stringify(user) }</span>
+            {/* <span>{ JSON.stringify(user) }</span> */}
         </div>
     )
 }

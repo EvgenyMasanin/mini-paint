@@ -4,7 +4,6 @@ import { ILogInFormProps, ITextFieldProps } from "./AuthTypes";
 
 
 const TextFieldForm: React.FC<WrappedFieldProps & ITextFieldProps> = ({ input, meta, ...props }) => {
-
     return (
         <TextField {...input} {...props} />
     )

@@ -6,15 +6,20 @@ import { Grid } from '@material-ui/core'
 import ToolBarContainer from '../ToolBar/ToolBarContainer'
 import UserDrawingsContainer from '../UserDrawings/UserDrawingsContainer'
 import { Route, Switch } from 'react-router-dom'
+import ProfileContainer from '../Profile/ProfileContainer'
 
 const MainPage: React.FC = () => {
-
+    
     return (
         <div className='flexContainer' >
             <Header />
-            <Switch>
+            <Switch> 
                 <Route path='/user-drawings'>
                     <UserDrawingsContainer />
+                </Route>
+
+                <Route path='/profile'>
+                    <ProfileContainer />
                 </Route>
 
                 <Route path='/'>

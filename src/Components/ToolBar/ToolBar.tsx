@@ -8,6 +8,7 @@ import CropLandscapeIcon from '@material-ui/icons/CropLandscape';
 import ColorizeIcon from '@material-ui/icons/Colorize';
 import RemoveIcon from '@material-ui/icons/Remove';
 import { CanvasTools, ICanvasFuncs } from '../Types/Types';
+import SaveImageDialogContainer from '../SaveImageDialog/SaveImageDialogContainer';
 
 const ToolBar: React.FC<ICanvasFuncs> = props => {
 
@@ -57,11 +58,19 @@ const ToolBar: React.FC<ICanvasFuncs> = props => {
             </ul>
 
 
-                <form className="col s12 center mx2">
-                <button className="btn waves-effect waves-light btn-large" type="submit" name="action">Save
-                            <i className="material-icons right">save</i>
-                        </button>
-                </form>
+            {/* <form className="col s12 center mx2" onSubmit={props.saveImage}> */}
+            <div className="center mx2">
+                <a className="btn waves-effect waves-light btn-large"
+                    onClick={props.openDialog}
+                >Save
+                    <i className="material-icons right">save</i>
+                </a>
+            </div>
+
+
+            {props.open && <SaveImageDialogContainer open={props.open} openDialog={props.openDialog}
+                closeDialog={props.closeDialog} saveImage={props.saveImage} />}
+            {/* </form> */}
         </div>
     )
 }

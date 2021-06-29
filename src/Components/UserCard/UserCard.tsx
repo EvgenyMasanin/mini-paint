@@ -4,7 +4,7 @@ import { IUserCard } from './UserCardContainer'
 const UserCard: React.FC<IUserCard> = ({user}) => {
 
     return (
-        <div className="card Medium w260">
+        <div className="card Small w260">
             <div className="card-image waves-effect waves-block waves-light">
                 <img className="activator" src={user.picURL} />
             </div>

@@ -1,3 +1,5 @@
+import React from "react";
+
 export enum CanvasTools {
     pensil = 'pensil',
     circle = 'circle',
@@ -14,6 +16,10 @@ export type CanvasTool = CanvasTools.circle |
 
 export interface ICanvasFuncs {
     changeTool: (tool: CanvasTool) => void
+    saveImage: (event: React.FormEvent) => void
+    openDialog: () => void
+    closeDialog: () => void
+    open: boolean
 }
 
 export interface UserDataType {
@@ -23,4 +29,4 @@ export interface UserDataType {
     likes: number
     title: string
     description: string
-} 
+}

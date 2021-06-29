@@ -75,7 +75,8 @@ html,body {
 }
 
 .w260 {
-    max-width: 350px;
+    max-width: 270px;
+    margin-right: 20px;
 }
 
 .card:hover {

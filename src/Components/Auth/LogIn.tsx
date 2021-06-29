@@ -13,13 +13,15 @@ import { LoginReduxForm } from './LoginReduxForm'
 
 const LogIn = () => {
 
-    const dispatch = useDispatch()  
+    const dispatch = useDispatch()
 
     //FIXME:
     const login: any = (formData: IFormFields) => {
         console.log(formData)
-        if(formData.email && formData.password)
-        dispatch(setUser(formData))
+        // console.log('as');
+        
+        // if (formData.email && formData.password)
+        // dispatch(setUser(formData))
     }
 
     return (

@@ -6,10 +6,10 @@ import { useTypedSelector } from '../../Hooks/reduxHooks';
 const SignIn = () => {
 
     // const { user } = useTypedSelector(state => { state.userData.user })
-    const user = useTypedSelector(state => state.userData.user)
+    const user = useTypedSelector(state => state.userData.userName)
     console.log(user);
-    if(user)
-    return <div>ololololololol</div>
+    if (user)
+        return <div>ololololololol</div>
     return (
         <LogInContainer />
     )

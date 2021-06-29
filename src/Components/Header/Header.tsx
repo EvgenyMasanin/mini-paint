@@ -18,6 +18,9 @@ const Header = () => {
                         <li><NavLink to='/signin' className="waves-effect waves-light">
                             <i className="material-icons left">exit_to_app</i>Sign out
                         </NavLink></li>
+                        <li><NavLink to='/profile' className="waves-effect waves-light">
+                            <i className="material-icons left"></i>Profile
+                        </NavLink></li>
                     </ul>
                 </div>
             </nav>

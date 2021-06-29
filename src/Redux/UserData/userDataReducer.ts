@@ -1,7 +1,8 @@
-import { UserDataActionTypes, UserDataActions } from "./userDataActions"
+import { UserDataActionTypes, UserDataActions, IUserData } from "./userDataActions"
 
 const initialState = {
-    user: null as null | object,
+    userName: 'gmasmin',
+    images:[] as IUserData[]
 }
 
 type UserDataState = typeof initialState
@@ -11,9 +12,13 @@ export const userDataReducer = (state = initialState, action: UserDataActions): 
         case UserDataActionTypes.SET_USER:
             return {
                 ...state,
-                user: action.payload
+                userName: action.payload
             }
-
+        case UserDataActionTypes.SET_IMAGE:
+            return {
+                ...state,
+                images: [...state.images, action.payload]
+            }
         default:
             return state
     }

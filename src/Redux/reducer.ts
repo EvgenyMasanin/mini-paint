@@ -6,7 +6,7 @@ import { canvasReducer } from "./Canvas/canvasReducer";
 export const rootReducer =  combineReducers({
     userData: userDataReducer,
     canvas: canvasReducer,
-    form: formReduser
+    form: formReduser,
 }) 
 
 export type RootState = ReturnType<typeof rootReducer>
