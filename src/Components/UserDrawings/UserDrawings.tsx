@@ -87,7 +87,7 @@ const UserDrawings = () => {
                 </form>
             </div>
 
-            <div className="col s10 flexJustifi overflowY" >
+            <div className="row col s10 overflowY" >
 
                 {users.map(user => (
                     <UserCardContainer key={user.id} user={user} />
