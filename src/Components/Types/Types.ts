@@ -5,14 +5,18 @@ export enum CanvasTools {
     circle = 'circle',
     rectangle = 'rectangle',
     pipette = 'pipette',
-    line = 'line'
+    line = 'line',
+    eraser = 'eraser',
+    palette = 'palette'
 }
 
 export type CanvasTool = CanvasTools.circle |
     CanvasTools.pensil |
     CanvasTools.pipette |
     CanvasTools.rectangle |
-    CanvasTools.line
+    CanvasTools.line |
+    CanvasTools.eraser |
+    CanvasTools.palette
 
 export interface ICanvasFuncs {
     changeTool: (tool: CanvasTool) => void

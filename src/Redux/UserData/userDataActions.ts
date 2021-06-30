@@ -54,8 +54,6 @@ export const setUser = (userName: string): ISetUserAction => {
 //         })
 //     }
 // }
-console.log(123);
-console.log('asd');
 
 
 interface ISetImageParams {

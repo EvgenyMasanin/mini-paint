@@ -12,6 +12,7 @@ html,body {
 .px1 {
     padding: 0 1rem;
 }
+
 .canvas {
     border: 3px solid cadetblue;
 }
@@ -22,12 +23,14 @@ html,body {
 
 .toolBar li {
     margin-bottom: 20px;
-    cursor: pointer;
 }
 
-.toolBar li i:hover {
-    border-radius: 20px;
-    background-color: rgb(211, 211, 211);
+a.active {
+    background-color: rgba(0,0,0,0.1);
+}
+
+.activeTool {
+    background-color: #2ab7a9 !important;
 }
 
 .App {

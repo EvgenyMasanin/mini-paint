@@ -10,7 +10,9 @@ export enum CanvasActions {
     SET_COORDINATES = 'SET_COORDINATES',
     SET_IS_DRAWING = 'SET_IS_DRAWING',
     SET_IS_READY_TO_DRAWING = 'SET_IS_READY_TO_DRAWING',
-    SET_CANVAS_FIELD = 'SET_CANVAS_FIELD'
+    SET_CANVAS_FIELD = 'SET_CANVAS_FIELD',
+    SET_IS_ERASING = 'SET_IS_ERASING',
+    SET_COLOR = 'SET_COLOR'
 }
 
 export interface CanvasChangeToolAction {
@@ -28,8 +30,8 @@ export interface CanvasSetIsDrawingAction {
     payload: boolean
 }
 
-export interface CanvasSetIsReadyToDrawingAction {
-    type: CanvasActions.SET_IS_READY_TO_DRAWING,
+export interface CanvasSetIsErasingAction {
+    type: CanvasActions.SET_IS_ERASING,
     payload: boolean
 }
 
@@ -38,11 +40,17 @@ export interface CanvasSetFieldAction {
     payload: string
 }
 
+export interface CanvasSetColor {
+    type: CanvasActions.SET_COLOR,
+    payload: string
+}
+
 export type CanvasAction = CanvasChangeToolAction |
     CanvasSetCoordinatesAction |
     CanvasSetIsDrawingAction |
     CanvasSetFieldAction |
-    CanvasSetIsReadyToDrawingAction
+    CanvasSetIsErasingAction |
+    CanvasSetColor
 
 export const canvasChangeTool = (tool: CanvasTools): CanvasAction => ({
     type: CanvasActions.CHANGE_TOOL,
@@ -62,12 +70,17 @@ export const canvasSetIsDrawing = (isDrawing: boolean): CanvasAction => ({
     payload: isDrawing
 })
 
-// export const canvasSetIsReadyToDrawingIsDrawing = (isReadyToDrawing: boolean): CanvasAction => ({
-//     type: CanvasActions.SET_IS_READY_TO_DRAWING,
-//     payload: isReadyToDrawing
-// })
+export const canvasSetIsErasing = (isErasing: boolean): CanvasAction => ({
+    type: CanvasActions.SET_IS_ERASING,
+    payload: isErasing
+})
 
 export const canvasSetField = (field: string): CanvasAction => ({
     type: CanvasActions.SET_CANVAS_FIELD,
     payload: field
+})
+
+export const canvasSetColor = (color: string): CanvasAction => ({
+    type: CanvasActions.SET_COLOR,
+    payload: color
 })

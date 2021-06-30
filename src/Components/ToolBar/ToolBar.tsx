@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { MutableRefObject, useEffect, useState } from 'react'
 import {
     IconButton,
 } from '@material-ui/core'
@@ -7,58 +7,114 @@ import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import CropLandscapeIcon from '@material-ui/icons/CropLandscape';
 import ColorizeIcon from '@material-ui/icons/Colorize';
 import RemoveIcon from '@material-ui/icons/Remove';
-import { CanvasTools, ICanvasFuncs } from '../Types/Types';
+import { CanvasTool, CanvasTools, ICanvasFuncs } from '../Types/Types';
 import SaveImageDialogContainer from '../SaveImageDialog/SaveImageDialogContainer';
+import ToolBarItemContainer from './ToolBarItem/ToolBarItemContainer';
+import ColorLensIcon from '@material-ui/icons/ColorLens';
+import StopIcon from '@material-ui/icons/Stop';
+import { useDispatch } from 'react-redux';
+import { canvasChangeTool } from '../../Redux/Canvas/canvasActions';
 
 const ToolBar: React.FC<ICanvasFuncs> = props => {
+
+    const [prevToolItemState, setPrevToolItemState] = useState<MutableRefObject<HTMLButtonElement | null> | null>(null)
+    const [toolItemState, setToolItemState] = useState<MutableRefObject<HTMLButtonElement | null> | null>(null)
+    
+    const dispatch = useDispatch()
+
+    const setActive = (toolItem: MutableRefObject<HTMLButtonElement | null>) => {
+        if (toolItemState && toolItem !== toolItemState)
+            toolItemState.current!.classList.remove('activeTool')
+
+        setPrevToolItemState(toolItemState)
+        setToolItemState(toolItem)
+    }
+
+    const setActivePrev = () => {
+        const prevTool = prevToolItemState?.current?.classList[prevToolItemState?.current?.classList.length - 1]
+        
+        dispatch(canvasChangeTool(prevTool as CanvasTool))
+        
+        prevToolItemState?.current?.classList.add('activeTool')
+        toolItemState?.current!.classList.remove('activeTool')
+        setToolItemState(prevToolItemState)
+    }
+
+    useEffect(() => {
+        if (toolItemState) {
+            toolItemState.current!.classList.add('activeTool')
+        }
+    }, [toolItemState])
 
     return (
         <div className='flexContainer justifySB toolBar'>
             <ul className="center">
                 <li>
-                    <IconButton
-                        aria-label="pensil"
-                        onClick={() => { props.changeTool(CanvasTools.pensil) }}
+                    <ToolBarItemContainer
+                        tool={CanvasTools.pensil}
+                        changeTool={props.changeTool}
+                        setActive={setActive}
                     >
                         <CreateIcon />
-                    </IconButton>
+                    </ToolBarItemContainer>
                 </li>
                 <li>
-                    <IconButton
-                        aria-label="circle"
-                        onClick={() => { props.changeTool(CanvasTools.circle) }}
+                    <ToolBarItemContainer
+                        tool={CanvasTools.circle}
+                        changeTool={props.changeTool}
+                        setActive={setActive}
                     >
                         <RadioButtonUncheckedIcon />
-                    </IconButton>
+                    </ToolBarItemContainer>
                 </li>
                 <li>
-                    <IconButton
-                        aria-label="rectangle"
-                        onClick={() => { props.changeTool(CanvasTools.rectangle) }}
+                    <ToolBarItemContainer
+                        tool={CanvasTools.rectangle}
+                        changeTool={props.changeTool}
+                        setActive={setActive}
                     >
                         <CropLandscapeIcon />
-                    </IconButton>
+                    </ToolBarItemContainer>
                 </li>
                 <li>
-                    <IconButton
-                        aria-label="pipette"
-                        onClick={() => { props.changeTool(CanvasTools.pipette) }}
+                    <ToolBarItemContainer
+                        tool={CanvasTools.pipette}
+                        changeTool={props.changeTool}
+                        setActive={setActive}
                     >
                         <ColorizeIcon />
-                    </IconButton>
+                    </ToolBarItemContainer>
                 </li>
                 <li>
-                    <IconButton
-                        aria-label="line"
-                        onClick={() => { props.changeTool(CanvasTools.line) }}
+                    <ToolBarItemContainer
+                        tool={CanvasTools.line}
+                        changeTool={props.changeTool}
+                        setActive={setActive}
                     >
                         <RemoveIcon style={{ transform: 'rotate(-45deg)' }} />
-                    </IconButton>
+                    </ToolBarItemContainer>
+                </li>
+                <li>
+                    <ToolBarItemContainer
+                        tool={CanvasTools.palette}
+                        changeTool={props.changeTool}
+                        setActive={setActive}
+                        setActivePrev={setActivePrev}
+                    >
+                        <ColorLensIcon />
+                    </ToolBarItemContainer>
+                </li>
+                <li>
+                    <ToolBarItemContainer
+                        tool={CanvasTools.eraser}
+                        changeTool={props.changeTool}
+                        setActive={setActive}
+                    >
+                        <StopIcon />
+                    </ToolBarItemContainer>
                 </li>
             </ul>
 
-
-            {/* <form className="col s12 center mx2" onSubmit={props.saveImage}> */}
             <div className="center mx2">
                 <a className="btn waves-effect waves-light btn-large"
                     onClick={props.openDialog}
@@ -67,10 +123,8 @@ const ToolBar: React.FC<ICanvasFuncs> = props => {
                 </a>
             </div>
 
-
             {props.open && <SaveImageDialogContainer open={props.open} openDialog={props.openDialog}
                 closeDialog={props.closeDialog} saveImage={props.saveImage} />}
-            {/* </form> */}
         </div>
     )
 }

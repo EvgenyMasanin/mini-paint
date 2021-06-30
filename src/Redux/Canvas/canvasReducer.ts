@@ -6,8 +6,10 @@ const initialState = {
     startY: 0,
     isReadyToDrawing: false,
     isDrawing: false,
+    isErasing: false,
     canvasField: '',
-    tool: CanvasTools.pensil
+    tool: CanvasTools.pensil,
+    color: '#000000'
 }
 
 type CanvasStateType = typeof initialState
@@ -29,17 +31,21 @@ export const canvasReducer = (state = initialState, action: CanvasAction): Canva
                 ...state,
                 isDrawing: action.payload
             }
-        case CanvasActions.SET_IS_READY_TO_DRAWING:
+        case CanvasActions.SET_IS_ERASING:
             return {
                 ...state,
-                isReadyToDrawing: action.payload
+                isErasing: action.payload
             }
-        case CanvasActions.SET_COORDINATES: {
+        case CanvasActions.SET_COORDINATES:
             return {
                 ...state,
                 ...action.payload
             }
-        }
+        case CanvasActions.SET_COLOR:
+            return {
+                ...state,
+                color: action.payload
+            }
         default:
             return state;
     }

@@ -47,7 +47,7 @@ const SaveForm: ComponentType<ISaveFormProps & InjectedFormProps<InjectedFormPro
                     </button>
                 </div>
                 <div className='col s3'>
-                    <button className="btn waves-effect waves-light " type="submit" name="action">Submit
+                    <button className="btn waves-effect waves-light " type="submit" name="action">Save
                         <i className="material-icons right">save</i>
                     </button>
                 </div>

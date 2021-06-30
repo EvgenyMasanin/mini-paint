@@ -9,16 +9,16 @@ const Header = () => {
                     <span className="logo">Mini paint</span>
 
                     <ul className="right">
-                        <li><NavLink to='/' className="waves-effect waves-light">
+                        <li><NavLink to='/main' className="">
                             <i className="material-icons left">brush</i>Draw a pic
                         </NavLink></li>
-                        <li><NavLink to='/user-drawings' className="waves-effect waves-light">
+                        <li><NavLink to='/user-drawings' className="">
                             <i className="material-icons left">image</i>User drawings
                         </NavLink></li>
-                        <li><NavLink to='/signin' className="waves-effect waves-light">
+                        <li><NavLink to='/signin' className="">
                             <i className="material-icons left">exit_to_app</i>Sign out
                         </NavLink></li>
-                        <li><NavLink to='/profile' className="waves-effect waves-light">
+                        <li><NavLink to='/profile' className="">
                             <i className="material-icons left"></i>Profile
                         </NavLink></li>
                     </ul>

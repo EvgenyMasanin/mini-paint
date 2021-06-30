@@ -22,7 +22,7 @@ const MainPage: React.FC = () => {
                     <ProfileContainer />
                 </Route>
 
-                <Route path='/'>
+                <Route path='/main'>
                     <Grid container className='flexGrow'>
                         <Grid item xs={3} lg={2} container>
                             <ToolBarContainer />
