@@ -1,6 +1,6 @@
 import { ComponentType, useEffect } from "react";
 import { setMaxLength, reqaired } from "../../Validators/saveFormValidators";
-import { InputValidatable, TextAriaValidatable } from "./SaveFormControls/SaveFormControls";
+import { InputValidatable, TextAriaValidatable } from "../ValidatableFormControls/ValidatableFormControls";
 import { Field, InjectedFormProps, reduxForm } from 'redux-form'
 
 interface ISaveFormProps {

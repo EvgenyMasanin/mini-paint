@@ -42,8 +42,8 @@ export const drawCircle = (
     canvasRef: React.RefObject<HTMLCanvasElement>
 ) => {
 
-    const endX = Math.abs(event.nativeEvent.offsetX - startX)
-    const endY = Math.abs(event.nativeEvent.offsetY - startY)
+    const endX = event.nativeEvent.offsetX - startX
+    const endY = event.nativeEvent.offsetY - startY
 
     const img = new Image()
     img.src = canvasField
@@ -53,7 +53,7 @@ export const drawCircle = (
     canvasContext.current!.save();
     canvasContext.current!.translate(startX + endX / 2, startY + endY / 2);
     canvasContext.current!.scale(1, endY / endX);
-    canvasContext.current!.arc(0, 0, endX / 2, 0, Math.PI * 2);
+    canvasContext.current!.arc(0, 0, Math.abs(endX / 2), 0, Math.PI * 2);
     canvasContext.current!.restore();
     canvasContext.current!.stroke();
     canvasContext.current!.closePath();

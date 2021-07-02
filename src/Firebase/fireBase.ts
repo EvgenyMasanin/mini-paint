@@ -3,7 +3,7 @@ import 'firebase/database';
 import 'firebase/firestore'
 import 'firebase/auth';
 
-const firebaseApp = firebase.initializeApp({
+export const firebaseApp = firebase.initializeApp({
     apiKey: "AIzaSyABxGTmfPzvPbUghv8UYpS4qSSqQU29y6E",
     authDomain: "mini-paint-75a01.firebaseapp.com",
     projectId: "mini-paint-75a01",

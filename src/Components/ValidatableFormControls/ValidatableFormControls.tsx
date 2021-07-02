@@ -1,6 +1,6 @@
 import React from "react"
 import { WrappedFieldMetaProps, WrappedFieldProps } from "redux-form"
-import { ValidationErrors } from "../../../Validators/saveFormValidators";
+import { ValidationErrors } from "../../Validators/saveFormValidators";
 
 export const InputValidatable: React.FC<WrappedFieldProps> = ({ input, meta, ...props }) => {
 
@@ -28,10 +28,16 @@ export const TextAriaValidatable: React.FC<WrappedFieldProps> = ({ input, meta, 
 
 function validate(meta: WrappedFieldMetaProps) {
     if (meta.error?.includes(ValidationErrors.ReqairedError)) {
-        return !meta.touched ? 'valid' : 'invalid'
+        return !meta.touched ? '' : 'invalid'
     }
     else if (meta.error?.includes(ValidationErrors.MaxLengthError)) {
         return 'invalid'
+    }
+    else if (meta.error?.includes(ValidationErrors.MixLengthError)) {
+        return !meta.touched ? '' : 'invalid'
+    }
+    else if (meta.error?.includes(ValidationErrors.PasswordsEqualsError)) {
+        return !meta.touched ? '' : 'invalid'
     }
 
     return 'valid'

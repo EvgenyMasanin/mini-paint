@@ -1,17 +1,30 @@
-import React from 'react'
-import LogInContainer from './LogInContainer'
-import { Redirect } from "react-router-dom";
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { useTypedSelector } from '../../Hooks/reduxHooks';
+import { authorizeUser, registerUser } from '../../Redux/UserData/userDataActions';
+import { LogInFormRedux } from './LogInFormRedux'
+import { Redirect } from "react-router-dom";
+
+interface ILogInFormFields {
+    email: string
+    password: string
+}
 
 const SignIn = () => {
 
-    // const { user } = useTypedSelector(state => { state.userData.user })
-    const user = useTypedSelector(state => state.userData.userName)
-    console.log(user);
-    if (user)
-        return <div>ololololololol</div>
+    const userName = useTypedSelector(state => state.userData.userName)
+
+    const dispatch = useDispatch()
+
+    const onSubmit: any = (data: ILogInFormFields) => {
+        dispatch(authorizeUser(data.email, data.password))
+    }
+
     return (
-        <LogInContainer />
+        userName ?
+            <Redirect to='/main' /> :
+            <LogInFormRedux onSubmit={onSubmit} />
     )
 }
 
