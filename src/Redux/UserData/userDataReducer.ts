@@ -1,5 +1,5 @@
 import { IUserDrawing } from "../UserDrawings/userDrawingsActions"
-import { UserDataActionTypes, UserDataActions, IUserData } from "./userDataActions"
+import { UserDataActions, UserDataActionTypes } from "./userDataTypes"
 
 const initialState = {
     userName: '',
@@ -29,7 +29,7 @@ export const userDataReducer = (state = initialState, action: UserDataActions): 
         case UserDataActionTypes.DELETE_IMAGE:
             return {
                 ...state,
-                images: [...state.images.filter(image => image.id != action.payload)]
+                images: [...state.images.filter(image => image.id !== action.payload)]
             }
         case UserDataActionTypes.GET_IMAGES:
             return {

@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { useTypedSelector } from '../../Hooks/reduxHooks';
-import { authorizeUser, registerUser } from '../../Redux/UserData/userDataActions';
+import { authorizeUser } from '../../Redux/UserData/userDataActions';
 import { LogInFormRedux } from './LogInFormRedux'
 import { Redirect } from "react-router-dom";
 

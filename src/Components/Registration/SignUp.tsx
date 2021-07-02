@@ -1,7 +1,6 @@
-import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../Hooks/reduxHooks'
-import { authorizeUser, registerUser } from '../../Redux/UserData/userDataActions'
+import { registerUser } from '../../Redux/UserData/userDataActions'
 import { RegistrationRedux } from './Registration'
 import { Redirect } from "react-router-dom";
 

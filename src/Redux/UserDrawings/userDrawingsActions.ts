@@ -1,6 +1,5 @@
 import { Dispatch } from "redux"
 import { fireStore } from "../../Firebase/fireBase"
-import firebase from 'firebase/app';
 import { RootState } from "../reducer";
 export enum UserDrawingsActionTypes {
     GET_ALL_IMAGES = 'GET_ALL_IMAGES'
@@ -34,7 +33,6 @@ export const getUserDrawings: IGetUserDrawings = () => {
 
         const userDrawings = [] as IUserDrawing[]
         fireStore.collectionGroup("images").where('userName', '!=', userName).get().then(data => {
-            console.log(data);
 
             data.docs.forEach(doc => {
                 const data = doc.data()
@@ -54,9 +52,3 @@ export const getUserDrawings: IGetUserDrawings = () => {
         })
     }
 }
-fireStore.collection("Users").get().then(data => {
-    data.docs.forEach(doc => {
-        console.log(doc.id);
-
-    })
-})

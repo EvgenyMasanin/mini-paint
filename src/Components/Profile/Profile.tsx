@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../Hooks/reduxHooks'
 import { getCurrentUserDrawings } from '../../Redux/UserData/userDataActions'
-import { UserDataType } from '../Types/Types'
 import UserCardContainer from '../UserCard/UserCardContainer'
 
 const Profile = () => {
@@ -15,11 +14,11 @@ const Profile = () => {
     }, [])
 
     return (
-        <div className="row flexGrow">
+        <div className="row flexGrow m0">
             <div className="col s12" ><h3>My drawings</h3></div>
-            <div className="col s12 overflowY" style={{maxHeight: 480}}>
+            <div className="col s12 overflowY" style={{ maxHeight: 480 }}>
 
-                {images.map(image => (
+                {images.length === 0 ? <h4 className='center'>You doesn't draw anything yet.</h4> : images.map(image => (
                     <UserCardContainer key={image.id} image={image} />
                 ))}
             </div>

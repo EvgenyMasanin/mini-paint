@@ -13,6 +13,14 @@ html,body {
     padding: 0 1rem;
 }
 
+.p1 {
+    padding: 1rem;
+}
+
+.m0 {
+    margin: 0;
+}
+
 .canvas {
     border: 3px solid cadetblue;
 }
@@ -88,4 +96,15 @@ a.active {
 
 .card:hover {
    box-shadow: 0 8px 17px 2px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%), 0 5px 5px -3px rgb(0 0 0 / 20%);
+}
+
+.full-width {
+    width: 100%;
+}
+
+@media only screen and (max-width: 994px){
+    .overflowY {
+    overflow-y: auto; 
+    max-height: 410px
+}
 }

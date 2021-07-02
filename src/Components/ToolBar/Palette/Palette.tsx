@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import ColorPicker, { Color, useColor } from "react-pick-color";
+import { useEffect } from 'react'
+import ColorPicker from "react-pick-color";
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../Hooks/reduxHooks';
 import { canvasSetColor } from '../../../Redux/Canvas/canvasActions';

@@ -1,11 +1,10 @@
 import React, { MutableRefObject, useEffect, useState } from 'react'
 import {
-    IconButton,
+    Typography,
 } from '@material-ui/core'
 import CreateIcon from '@material-ui/icons/Create';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import CropLandscapeIcon from '@material-ui/icons/CropLandscape';
-import ColorizeIcon from '@material-ui/icons/Colorize';
 import RemoveIcon from '@material-ui/icons/Remove';
 import { CanvasTool, CanvasTools, ICanvasFuncs } from '../Types/Types';
 import SaveImageDialogContainer from '../SaveImageDialog/SaveImageDialogContainer';
@@ -13,13 +12,17 @@ import ToolBarItemContainer from './ToolBarItem/ToolBarItemContainer';
 import ColorLensIcon from '@material-ui/icons/ColorLens';
 import StopIcon from '@material-ui/icons/Stop';
 import { useDispatch } from 'react-redux';
-import { canvasChangeTool } from '../../Redux/Canvas/canvasActions';
+import { canvasChangeTool, canvasSetLineWidth } from '../../Redux/Canvas/canvasActions';
+
+
+import Slider from '@material-ui/core/Slider';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const ToolBar: React.FC<ICanvasFuncs> = props => {
 
     const [prevToolItemState, setPrevToolItemState] = useState<MutableRefObject<HTMLButtonElement | null> | null>(null)
     const [toolItemState, setToolItemState] = useState<MutableRefObject<HTMLButtonElement | null> | null>(null)
-    
+
     const dispatch = useDispatch()
 
     const setActive = (toolItem: MutableRefObject<HTMLButtonElement | null>) => {
@@ -32,9 +35,9 @@ const ToolBar: React.FC<ICanvasFuncs> = props => {
 
     const setActivePrev = () => {
         const prevTool = prevToolItemState?.current?.classList[prevToolItemState?.current?.classList.length - 1]
-        
+
         dispatch(canvasChangeTool(prevTool as CanvasTool))
-        
+
         prevToolItemState?.current?.classList.add('activeTool')
         toolItemState?.current!.classList.remove('activeTool')
         setToolItemState(prevToolItemState)
@@ -45,6 +48,24 @@ const ToolBar: React.FC<ICanvasFuncs> = props => {
             toolItemState.current!.classList.add('activeTool')
         }
     }, [toolItemState])
+
+    function ValueLabelComponent(props: any) {
+        const { children, open, value } = props;
+
+        return (
+            <Tooltip open={open} enterTouchDelay={0} placement="top" title={value}>
+                {children}
+            </Tooltip>
+        );
+    }
+
+    const [value, setValue] = React.useState(1);
+
+    const handleChange = (event: any, newValue: any) => {
+        setValue(newValue);
+        dispatch(canvasSetLineWidth(newValue))
+    };
+
 
     return (
         <div className='flexContainer justifySB toolBar'>
@@ -76,7 +97,7 @@ const ToolBar: React.FC<ICanvasFuncs> = props => {
                         <CropLandscapeIcon />
                     </ToolBarItemContainer>
                 </li>
-                <li>
+                {/* <li>
                     <ToolBarItemContainer
                         tool={CanvasTools.pipette}
                         changeTool={props.changeTool}
@@ -84,7 +105,7 @@ const ToolBar: React.FC<ICanvasFuncs> = props => {
                     >
                         <ColorizeIcon />
                     </ToolBarItemContainer>
-                </li>
+                </li> */}
                 <li>
                     <ToolBarItemContainer
                         tool={CanvasTools.line}
@@ -113,14 +134,32 @@ const ToolBar: React.FC<ICanvasFuncs> = props => {
                         <StopIcon />
                     </ToolBarItemContainer>
                 </li>
+                <li>
+                    <Typography id="non-linear-slider" gutterBottom >
+                        Line weight
+                    </Typography>
+                    <Slider
+                        ValueLabelComponent={ValueLabelComponent}
+                        style={{ width: 50 }}
+                        value={value}
+                        min={1}
+                        step={1}
+                        max={5}
+                        onChange={handleChange}
+                        aria-labelledby="non-linear-slider"
+                        aria-label="custom thumb label"
+                        defaultValue={1}
+                        color='secondary'
+                    />
+                </li>
             </ul>
 
             <div className="center mx2">
-                <a className="btn waves-effect waves-light btn-large"
+                <button className="btn waves-effect waves-light btn-large"
                     onClick={props.openDialog}
                 >Save
                     <i className="material-icons right">save</i>
-                </a>
+                </button>
             </div>
 
             {props.open && <SaveImageDialogContainer open={props.open} openDialog={props.openDialog}

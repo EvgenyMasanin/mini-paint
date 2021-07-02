@@ -25,7 +25,7 @@ export const reqaired = (value: string) => {
 }
 
 export const passwordsEquals = (repeatPassword: string, formData: ILogInFormFields) => {
-    if (repeatPassword != formData.password) {
+    if (repeatPassword !== formData.password) {
         return ValidationErrors.PasswordsEqualsError
     }
 }

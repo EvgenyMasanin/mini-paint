@@ -16,7 +16,7 @@ const Canvas: React.FC<ICanvasProps> = props => {
             <canvas
                 className='canvas'
                 width={1000}
-                height={550}
+                height={530}
                 ref={props.canvasRef}
                 onMouseDown={props.onMouseDown}
                 onMouseUp={props.onMouseUp}

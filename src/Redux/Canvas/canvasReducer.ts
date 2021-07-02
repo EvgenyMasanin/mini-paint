@@ -1,5 +1,5 @@
 import { CanvasTools } from "../../Components/Types/Types";
-import { CanvasAction, CanvasActions } from "./canvasActions";
+import { CanvasAction, CanvasActions } from "./canvasTypes";
 
 const initialState = {
     startX: 0,
@@ -9,7 +9,8 @@ const initialState = {
     isErasing: false,
     canvasField: '',
     tool: CanvasTools.pensil,
-    color: '#000000'
+    color: '#000000',
+    lineWidth: 1
 }
 
 type CanvasStateType = typeof initialState
@@ -45,6 +46,11 @@ export const canvasReducer = (state = initialState, action: CanvasAction): Canva
             return {
                 ...state,
                 color: action.payload
+            }
+        case CanvasActions.SET_LINE_WIDTH:
+            return {
+                ...state,
+                lineWidth: action.payload
             }
         default:
             return state;

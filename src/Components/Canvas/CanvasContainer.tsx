@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../Hooks/reduxHooks'
-import { canvasChangeTool, canvasSetCoordinates, canvasSetField, canvasSetIsDrawing, canvasSetIsErasing } from '../../Redux/Canvas/canvasActions'
-import { CanvasTool, CanvasTools } from '../Types/Types'
+import { canvasSetCoordinates, canvasSetField, canvasSetIsDrawing, canvasSetIsErasing } from '../../Redux/Canvas/canvasActions'
+import { CanvasTools } from '../Types/Types'
 import Canvas from './Canvas'
 import { drawPensilLine, drawCircle, drawRect, drawLine, erase } from './CanvasFunctions'
 
@@ -14,7 +14,7 @@ const CanvasContainer: React.FC = () => {
 
     const dispatch = useDispatch()
 
-    const { startX, startY, canvasField, isDrawing, isErasing, tool, color } = useTypedSelector(state => ({
+    const { startX, startY, canvasField, isDrawing, isErasing, tool, color, lineWidth } = useTypedSelector(state => ({
         startX: state.canvas.startX,
         startY: state.canvas.startY,
         canvasField: state.canvas.canvasField,
@@ -22,6 +22,7 @@ const CanvasContainer: React.FC = () => {
         isErasing: state.canvas.isErasing,
         tool: state.canvas.tool,
         color: state.canvas.color,
+        lineWidth: state.canvas.lineWidth
     }))
 
     useEffect(() => {
@@ -29,7 +30,7 @@ const CanvasContainer: React.FC = () => {
         if (canvasContext.current && canvasRef.current) {
             canvasContext.current.fillStyle = 'white'
             canvasContext.current.lineCap = 'round'
-            canvasContext.current.lineWidth = 5
+            canvasContext.current.lineWidth = lineWidth
             canvasContext.current.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height);
             dispatch(canvasSetField(canvasRef.current!.toDataURL("image/png")))
         }
@@ -38,6 +39,10 @@ const CanvasContainer: React.FC = () => {
     useEffect(() => {
         canvasContext.current!.strokeStyle = color
     }, [color])
+
+    useEffect(() => {
+        canvasContext.current!.lineWidth = lineWidth
+    }, [lineWidth])
 
     const handleMouthDown = (event: React.MouseEvent) => {
         if (isErasing) {
@@ -50,12 +55,12 @@ const CanvasContainer: React.FC = () => {
             dispatch(canvasSetCoordinates(startX, startY))
             dispatch(canvasSetIsDrawing(true))
 
-            if (tool == CanvasTools.pensil && canvasContext.current) {
+            if (tool === CanvasTools.pensil && canvasContext.current) {
                 canvasContext.current.beginPath()
                 canvasContext.current.arc(startX, startY, 1, 0 * Math.PI, 2 * Math.PI)
                 canvasContext.current.stroke()
             }
-            if (tool == CanvasTools.line && canvasContext.current) {
+            if (tool === CanvasTools.line && canvasContext.current) {
                 canvasContext.current.beginPath()
             }
         }

@@ -1,6 +1,6 @@
 import React from "react"
 import { WrappedFieldMetaProps, WrappedFieldProps } from "redux-form"
-import { ValidationErrors } from "../../Validators/saveFormValidators";
+import { ValidationErrors } from "../../Validators/formValidators";
 
 export const InputValidatable: React.FC<WrappedFieldProps> = ({ input, meta, ...props }) => {
 

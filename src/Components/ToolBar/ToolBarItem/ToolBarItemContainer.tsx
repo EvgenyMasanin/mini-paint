@@ -1,4 +1,4 @@
-import React, { MutableRefObject, useEffect, useState } from 'react'
+import React, { MutableRefObject } from 'react'
 import { CanvasTool } from '../../Types/Types'
 import ToolBarItem from './ToolBarItem'
 

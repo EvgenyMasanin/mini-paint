@@ -1,5 +1,5 @@
 import { ComponentType, useEffect } from "react";
-import { setMaxLength, reqaired } from "../../Validators/saveFormValidators";
+import { setMaxLength, reqaired } from "../../Validators/formValidators";
 import { InputValidatable, TextAriaValidatable } from "../ValidatableFormControls/ValidatableFormControls";
 import { Field, InjectedFormProps, reduxForm } from 'redux-form'
 

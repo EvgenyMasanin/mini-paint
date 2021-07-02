@@ -1,6 +1,5 @@
 import React from 'react'
 import UserCard from './UserCard'
-import { UserDataType } from '../Types/Types'
 import { IUserDrawing } from '../../Redux/UserDrawings/userDrawingsActions'
 import { useDispatch } from 'react-redux'
 import { deleteImage } from '../../Redux/UserData/userDataActions'

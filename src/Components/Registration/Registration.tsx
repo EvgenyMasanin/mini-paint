@@ -1,10 +1,8 @@
-import React from 'react'
-import { ComponentType, useEffect } from "react";
-import { setMaxLength, reqaired, setMinLength, passwordsEquals } from "../../Validators/saveFormValidators";
+import { ComponentType } from "react";
+import { reqaired, setMinLength, passwordsEquals } from "../../Validators/formValidators";
 import { Field, InjectedFormProps, reduxForm } from 'redux-form'
 import { InputValidatable } from "../ValidatableFormControls/ValidatableFormControls";
 import { NavLink } from 'react-router-dom';
-import { useToasts } from 'react-toast-notifications';
 
 const minLengthPassword = setMinLength(8)
 

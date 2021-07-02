@@ -1,5 +1,5 @@
 import { Dispatch } from "redux"
-import { CanvasAction } from "../../Redux/Canvas/canvasActions"
+import { CanvasAction } from "../../Redux/Canvas/canvasTypes"
 
 export const drawPensilLine = (
     event: React.MouseEvent<Element, MouseEvent>,

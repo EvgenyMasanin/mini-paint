@@ -1,10 +1,9 @@
 import { ComponentType, useEffect } from "react";
-import { setMaxLength, reqaired, setMinLength } from "../../Validators/saveFormValidators";
+import { reqaired, setMinLength } from "../../Validators/formValidators";
 import { Field, InjectedFormProps, reduxForm } from 'redux-form'
-import { InputValidatable, TextAriaValidatable } from "../ValidatableFormControls/ValidatableFormControls";
+import { InputValidatable } from "../ValidatableFormControls/ValidatableFormControls";
 import { NavLink } from "react-router-dom";
 
-// const maxLengthDescription = setMaxLength(250)
 const minLengthPassword = setMinLength(8)
 
 const LogInForm: ComponentType<InjectedFormProps<InjectedFormProps<{}, {}, string>, {}, string>> = (props) => {
