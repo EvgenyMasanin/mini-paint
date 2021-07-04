@@ -41,20 +41,10 @@ a.active {
     background-color: #2ab7a9 !important;
 }
 
-.App {
-    /* padding: 0 10%; */
-    /* position: absolute; */
-    /* inset: 0; */
-     /* display: flex;
-    justify-content: center; */
-    /* min-height: 500px; */
-    /* align-items: center; */
-}
 .flexContainer{
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
-    /* justify-content: center; */
 }
 .flexGrow {
     flex: 1 1 auto;
@@ -63,8 +53,6 @@ a.active {
 .flexJustifi {
     display: flex;
     flex-wrap: wrap;
-    /* flex-direction: column; */
-    /* align-items: center; */
     justify-content: space-between;
 }
 

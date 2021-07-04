@@ -13,13 +13,10 @@ const UserDrawingsContainer = () => {
     const [filter, setFilter] = useState('')
     let images = useTypedSelector(state => state.userDrawings.images)
     const [imagesToDisplay, setImagesToDisplay] = useState([] as IUserDrawing[])
+    
     useEffect(() => {
         dispatch(getUserDrawings())
     }, [])
-
-    useEffect(() => {
-        setImagesToDisplay(images)
-    }, [images])
 
     useEffect(() => {
         if (!filter) {
@@ -28,7 +25,7 @@ const UserDrawingsContainer = () => {
         else {
             setImagesToDisplay(images.filter((image) => image.userName.startsWith(filter)))
         }
-    }, [filter])
+    }, [filter, images])
 
     const [, loading] = useCollection(fireStore.collectionGroup("images"))
 
