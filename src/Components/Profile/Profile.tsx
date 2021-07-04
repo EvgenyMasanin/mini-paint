@@ -18,7 +18,7 @@ const Profile = () => {
             <div className="col s12" ><h3>My drawings</h3></div>
             <div className="col s12 overflowY" style={{ maxHeight: 480 }}>
 
-                {images.length === 0 ? <h4 className='center'>You doesn't draw anything yet.</h4> : images.map(image => (
+                {images.length === 0 ? <h4 className='center'>You haven't drawn anything yet.</h4> : images.map(image => (
                     <UserCardContainer key={image.id} image={image} />
                 ))}
             </div>
