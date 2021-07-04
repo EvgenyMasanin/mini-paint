@@ -33,32 +33,51 @@ const Header = () => {
                     <a href="#mobile-demo" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
 
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
-                        <li><NavLink to='/main' className="">
-                            <i className="material-icons left">brush</i>Draw a pic
-                        </NavLink></li>
-                        <li><NavLink to='/user-drawings' className="">
-                            <i className="material-icons left">image</i>User drawings
-                        </NavLink></li>
-                        <li><NavLink to='/profile' className="">
-                            <i className="material-icons left">account_box</i>Profile
-                        </NavLink></li>
-                        <li><NavLink to='/signin' className=""
-                            onClick={signOut}
-                        >
-                            <i className="material-icons left">exit_to_app</i>Sign out
-                        </NavLink></li>
+                        <li>
+                            <NavLink to='/main'>
+                                <i className="material-icons left">brush</i>
+                                Draw a pic
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/user-drawings'>
+                                <i className="material-icons left">image</i>
+                                User drawings
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/profile'>
+                                <i className="material-icons left">account_box</i>
+                                Profile
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/signin'
+                                onClick={signOut}
+                            >
+                                <i className="material-icons left">exit_to_app</i>
+                                Sign out
+                            </NavLink>
+                        </li>
                     </ul>
+
                     <ul className="sidenav" id="mobile-demo" ref={sideNav}>
-                        <li><NavLink to='/main' className="">
+                        <li><NavLink to='/main' onClick={() => {
+                            sideNavInstance.current.close()
+                        }}>
                             <i className="material-icons left">brush</i>Draw a pic
                         </NavLink></li>
-                        <li><NavLink to='/user-drawings' className="">
+                        <li><NavLink to='/user-drawings' onClick={() => {
+                            sideNavInstance.current.close()
+                        }}>
                             <i className="material-icons left">image</i>User drawings
                         </NavLink></li>
-                        <li><NavLink to='/profile' className="">
+                        <li><NavLink to='/profile' onClick={() => {
+                            sideNavInstance.current.close()
+                        }}>
                             <i className="material-icons left">account_box</i>Profile
                         </NavLink></li>
-                        <li><NavLink to='/signin' className=""
+                        <li><NavLink to='/signin'
                             onClick={signOut}
                         >
                             <i className="material-icons left">exit_to_app</i>Sign out
