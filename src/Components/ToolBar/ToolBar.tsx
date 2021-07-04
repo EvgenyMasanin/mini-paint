@@ -68,7 +68,7 @@ const ToolBar: React.FC<ICanvasFuncs> = props => {
 
 
     return (
-        <div className='flexContainer justifySB toolBar'>
+        <div className='toolBar vh78' >
             <ul className="center">
                 <li>
                     <ToolBarItemContainer
@@ -154,7 +154,7 @@ const ToolBar: React.FC<ICanvasFuncs> = props => {
                 </li>
             </ul>
 
-            <div className="center mx2">
+            <div className="center">
                 <button className="btn waves-effect waves-light btn-large"
                     onClick={props.openDialog}
                 >Save

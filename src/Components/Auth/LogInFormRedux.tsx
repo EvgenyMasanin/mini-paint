@@ -15,7 +15,7 @@ const LogInForm: ComponentType<InjectedFormProps<InjectedFormProps<{}, {}, strin
     }, [])
 
     return (
-        <form onSubmit={props.handleSubmit} style={{ width: 500, margin: '0 auto' }}>
+        <form onSubmit={props.handleSubmit} className='initialForm'>
             <div className="row">
                 <div className="col s12 center">
                     <h1>Authorization</h1>
@@ -23,7 +23,11 @@ const LogInForm: ComponentType<InjectedFormProps<InjectedFormProps<{}, {}, strin
 
                 <div className="input-field col s12">
                     <i className="material-icons prefix">account_circle</i>
-                    <Field id='email' name='email' type="email"
+                    <Field
+                        id='email'
+                        name='email'
+                        type="email"
+                        autoComplete='email'
                         component={InputValidatable}
                         validate={[reqaired]}
                     />
@@ -36,6 +40,7 @@ const LogInForm: ComponentType<InjectedFormProps<InjectedFormProps<{}, {}, strin
                         id='password'
                         name='password'
                         type="password"
+                        autoComplete='password'
                         component={InputValidatable}
                         validate={[minLengthPassword, reqaired]}
                     />

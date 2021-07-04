@@ -48,35 +48,37 @@ const MainPage: React.FC = () => {
             <div className="progress">
                 <div className="indeterminate" />
             </div> :
-            <div className='flexContainer' >
+            <div className='' >
                 {userName && <Header />}
-                <Switch>
-                    <Route path='/signin'>
-                        <SignIn />
-                    </Route>
-                    <Route path='/signup'>
-                        <SignUp />
-                    </Route>
+                <main>
+                    <Switch>
+                        <Route path='/signin'>
+                            <SignIn />
+                        </Route>
+                        <Route path='/signup'>
+                            <SignUp />
+                        </Route>
 
-                    <Route path='/user-drawings'>
-                        <UserDrawingsContainer />
-                    </Route>
+                        <Route path='/user-drawings'>
+                            <UserDrawingsContainer />
+                        </Route>
 
-                    <Route path='/profile'>
-                        <ProfileContainer />
-                    </Route>
+                        <Route path='/profile'>
+                            <ProfileContainer />
+                        </Route>
 
-                    <Route path='/main'>
-                        <Grid container className='flexGrow'>
-                            <Grid item xs={3} lg={2} container>
-                                <ToolBarContainer />
+                        <Route path='/main'>
+                            <Grid container className='overflowX'>
+                                <Grid item xs={4} lg={2} container className='justifiCenter'>
+                                    <ToolBarContainer />
+                                </Grid>
+                                <Grid item xs={8} lg={10} className='center vh78'>
+                                    <CanvasContainer />
+                                </Grid>
                             </Grid>
-                            <Grid item xs={9} lg={10} className='center'>
-                                <CanvasContainer />
-                            </Grid>
-                        </Grid>
-                    </Route>
-                </Switch>
+                        </Route>
+                    </Switch>
+                </main>
                 {userName && <Footer />}
                 {!userName &&
                     <Redirect to='/signin' />

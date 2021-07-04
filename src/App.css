@@ -2,6 +2,15 @@ html,body {
     height: 100%;
 }
 
+header, footer {
+    height: 10vh;
+}
+
+main {
+    height: 80vh;
+    overflow-y: auto;
+}
+
 #root {
     display: flex;
     flex-direction: column;
@@ -56,14 +65,20 @@ a.active {
     justify-content: space-between;
 }
 
+.justifiCenter {
+    justify-content: center;
+}
+
 .toolBar {
+    padding: 15px;
     justify-content: space-between;
-    border-right: 3px solid cadetblue;
+    border: 3px solid cadetblue;
 }
 
 .overflowY {
     overflow-y: auto; 
-    max-height: 580px
+    /* max-height: 580px */
+    max-height: 78vh;
 }
 
 .overflowX {
@@ -86,13 +101,33 @@ a.active {
    box-shadow: 0 8px 17px 2px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%), 0 5px 5px -3px rgb(0 0 0 / 20%);
 }
 
+.vh15 {
+    height: 15vh;
+}
+
+.vh78 {
+    height: 78vh;
+}
+
+.vh63 {
+    height: 63vh;
+    overflow-y: auto;
+}
+
 .full-width {
     width: 100%;
+}
+
+@media only screen and (min-width: 500px){
+.initialForm {
+    width: 500px;
+    margin: 0 auto;
+}
 }
 
 @media only screen and (max-width: 994px){
     .overflowY {
     overflow-y: auto; 
-    max-height: 410px
+    max-height: 55vh
 }
 }

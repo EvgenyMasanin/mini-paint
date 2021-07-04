@@ -9,7 +9,7 @@ const minLengthPassword = setMinLength(8)
 const RegistrationForm: ComponentType<InjectedFormProps<InjectedFormProps<{}, {}, string>, {}, string>> = (props) => {
 
     return (
-        <form onSubmit={props.handleSubmit} style={{ width: 500, margin: '0 auto' }}>
+        <form onSubmit={props.handleSubmit} className='initialForm'>
             <div className="row">
                 <div className="col s12 center">
                     <h1>Registration</h1>
