@@ -3,13 +3,16 @@ import 'firebase/database';
 import 'firebase/firestore'
 import 'firebase/auth';
 
+const env = process.env
+console.log(env);
+
 export const firebaseApp = firebase.initializeApp({
-    apiKey: "AIzaSyABxGTmfPzvPbUghv8UYpS4qSSqQU29y6E",
-    authDomain: "mini-paint-75a01.firebaseapp.com",
-    projectId: "mini-paint-75a01",
-    storageBucket: "mini-paint-75a01.appspot.com",
-    messagingSenderId: "1026681595962",
-    appId: "1:1026681595962:web:b6a08e8680d16c1340ad03"
+    apiKey: env.REACT_APP_API_KEY,
+    authDomain: env.REACT_APP_AUTH_DOMAIN ,
+    projectId: env.REACT_APP_PROJECT_ID ,
+    storageBucket: env.REACT_APP_STORAGE_BUCKET ,
+    messagingSenderId: env.REACT_APP_MESSAGING_SENDER_ID ,
+    appId: env.REACT_APP_APP_ID 
 });
 
 export const fireStore = firebaseApp.firestore()

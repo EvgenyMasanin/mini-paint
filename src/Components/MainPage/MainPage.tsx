@@ -30,7 +30,6 @@ const MainPage: React.FC = () => {
     }, [])
 
     const [, loading] = useAuthState(firebaseApp.auth())
-    // const [isRegister, setIsRegister] = useState(false)
 
     const { addToast } = useToasts();
     useEffect(() => {
@@ -43,6 +42,7 @@ const MainPage: React.FC = () => {
             dispatch(setError(''))
         }
     }, [error])
+
     return (
         loading ?
             <div className="progress">
