@@ -49,7 +49,7 @@ const UserDrawingsContainer = () => {
             loading={loading}
             onSubmit={onSubmit}
         >
-            {imagesToDisplay.length === 0 && filter ? <h3>User: {filter} does not has images.</h3> :
+            {imagesToDisplay.length === 0 && filter ? <h3>User: {filter} has no images.</h3> :
                 imagesToDisplay.map((image: IUserDrawing) => (
                     <UserCardContainer key={image.id} image={image} />
                 ))}
