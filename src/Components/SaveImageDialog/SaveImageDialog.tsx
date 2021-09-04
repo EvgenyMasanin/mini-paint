@@ -41,7 +41,7 @@ const SaveImageDialog = (props: any) => {
             aria-labelledby="alert-dialog-slide-title"
             aria-describedby="alert-dialog-slide-description"
         >
-            <DialogTitle id="alert-dialog-slide-title">{"Use Google's location service?"}</DialogTitle>
+            <DialogTitle id="alert-dialog-slide-title">{"Save picture"}</DialogTitle>
             <DialogContent>
                 <SaveFormRedux onSubmit={onSubmit} closeDialog={props.closeDialog} />
             </DialogContent>
